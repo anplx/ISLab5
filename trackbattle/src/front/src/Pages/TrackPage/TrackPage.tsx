@@ -35,7 +35,8 @@ export const TrackPage: React.FC = () => {
 
     const handlePlay = () => {
         const notes = JsonSerializer.deserialize(JSON.parse(fromBase64(track.track)), Notes)
-        notes?.play(player);
+        player.stopPlaying();
+        notes?.notes && notes?.waveform && player.playString(notes?.notes, notes?.waveform);
     }
 
     return (
